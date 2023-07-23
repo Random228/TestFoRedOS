@@ -11,8 +11,8 @@ function INSTALL_DOCKER(){
 # Создание рабочих директорий и загрузка необходимых компонентов
 function GET_FILE(){
     # Загрузка Dockerfile и instapp.bash(подробнее - с.м сам скрипт)
-    wget -c --directory-prefix=/home/docker/nginx https://raw.githubusercontent.com/Random228/TestFoRedOS/main/instapp.bash
-    wget -c --directory-prefix=/home/docker/nginx https://raw.githubusercontent.com/Random228/TestFoRedOS/main/Dockerfile
+    wget -c https://raw.githubusercontent.com/Random228/TestFoRedOS/main/instapp.bash
+    wget -c https://raw.githubusercontent.com/Random228/TestFoRedOS/main/Dockerfile
     # Загрузка необходимых пакетов и зависимостей для исходного контейнера.
     docker run --rm -v /bin:/bin:ro -v /lib:/lib:ro -v /lib64:/lib64:ro -v /usr:/usr:ro -v /home/docker/nginx:/home/nginx -it registry.red-soft.ru/ubi7/ubi-micro yum install --downloadonly --downloaddir=/home/nginx -y microdnf
 }
