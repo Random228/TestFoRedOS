@@ -25,7 +25,7 @@ function DOCKER_BUILD(){
     docker build -t registry.red-soft.ru/ubi7/nginx-micro:test .
     # Сборка Docker image
     docker save registry.red-soft.ru/ubi7/nginx-micro:test > images.tar.xz
-    ls ./
+     pwd && ls ./ | grep ima*
 }
 
 # Проверка пользователя и запуск скрипта
