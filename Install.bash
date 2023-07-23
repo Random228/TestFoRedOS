@@ -4,13 +4,14 @@
 
 # Установка и проверка Docker
 function INSTALL_DOCKER(){
-    # Устанавливаем Docker
-    yum install cri-dockerd.x86_64
-    # Проверка Docker. Если Docker установился - включается служба dockerd
+    # Проверка Docker. Если Docker установлен - включается служба dockerd.
+    # Если Docker не установлен - производится установка и включение службы dockerd.
     if [[ `docker --version | awk {'print $0'}` == "Docker" ]]; then
     systemctl start docker
     # Если произошёл сбой в установке, мы получаем ошибку
-    else echo -E "Возникла ошибка при установке Docker"
+    else 
+        yum install cri-dockerd.x86_64 -y
+        systemctl start docker
     fi
 }
 
@@ -35,6 +36,7 @@ function DOCKER_BUILD(){
 
 # Проверка пользователя и запуск скрипта
 function MAIN(){
+    clear
     if [[ `whoami` == "root" ]]; then
     INSTALL_DOCKER
     GET_FILE
