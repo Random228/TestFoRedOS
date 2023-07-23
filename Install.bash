@@ -42,3 +42,4 @@ function MAIN(){
     else echo -E "Скрипт должен запускаться пользователем root"
     fi
 }
+MAIN
