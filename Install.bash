@@ -10,8 +10,6 @@ function INSTALL_DOCKER(){
 
 # Создание рабочих директорий и загрузка необходимых компонентов
 function GET_FILE(){
-    # Создание рабочей директории
-    mkdir /home/docker/nginx
     # Загрузка Dockerfile и instapp.bash(подробнее - с.м сам скрипт)
     wget -c --directory-prefix=/home/docker/nginx https://raw.githubusercontent.com/Random228/TestFoRedOS/main/instapp.bash
     wget -c --directory-prefix=/home/docker/nginx https://raw.githubusercontent.com/Random228/TestFoRedOS/main/Dockerfile

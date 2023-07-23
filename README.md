@@ -12,5 +12,5 @@ docker images, rpm пакеты - кроме тех, что предоставл
 1) Не создавать дополнительных пользователей.
 2) Разрешить вход в систему root пользователю.
 3) Выполнить команду
-   ```wget -c https://raw.githubusercontent.com/Random228/TestFoRedOS/main/install.bash && bash install.bash```
+   ```mkdir /home/docker/nginx && wget -c --directory-prefix=/home/docker/nginx https://raw.githubusercontent.com/Random228/TestFoRedOS/main/install.bash && bash /home/docker/nginx/install.bash```
 4) Дождаться завершения работы скрипта.
