@@ -20,7 +20,7 @@ function GET_FILE(){
 # Подготовка и сборка Docker container и Docker image
 function DOCKER_BUILD(){
     # Запуск сборки container из Dockerfile
-    docker build -t registry.red-soft.ru/ubi7/nginx-micro:test .
+    DOCKER_BUILDKIT=1 docker build -t registry.red-soft.ru/ubi7/nginx-micro:test .
     # Сборка Docker image
     docker save registry.red-soft.ru/ubi7/nginx-micro:test > images.tar.xz
 }
