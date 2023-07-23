@@ -10,8 +10,7 @@ function INSTALL_DOCKER(){
     systemctl start docker
     # Если произошёл сбой в установке, мы получаем ошибку
     else 
-        yum install cri-dockerd.x86_64 -y
-        systemctl start docker
+        yum install cri-dockerd.x86_64 -y && systemctl start docker
     fi
 }
 
