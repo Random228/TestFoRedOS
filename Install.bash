@@ -6,7 +6,7 @@
 function INSTALL_DOCKER(){
     # Проверка Docker. Если Docker установлен - включается служба dockerd.
     # Если Docker не установлен - производится установка и включение службы dockerd.
-    if [[ `docker --version | awk {'print $0'}` == "Docker" ]]; then
+    if [[ `docker --version | awk {'print $0'}` == "Docker" >/dev/null 2>&1 ]]; then
     systemctl start docker
     # Если произошёл сбой в установке, мы получаем ошибку
     else 
