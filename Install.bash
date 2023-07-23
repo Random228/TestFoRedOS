@@ -7,10 +7,10 @@ function INSTALL_DOCKER(){
     # Проверка Docker. Если Docker установлен - включается служба dockerd.
     # Если Docker не установлен - производится установка и включение службы dockerd.
     if [[ `docker --version | awk {'print $0'}` == "Docker" ]]; then
-    systemctl start docker
+    systemctl start docker.service
     # Если произошёл сбой в установке, мы получаем ошибку
     else 
-        yum install cri-dockerd.x86_64 -y && systemctl start docker
+        yum install cri-dockerd.x86_64 -y && systemctl start docker.service
     fi
 }
 
