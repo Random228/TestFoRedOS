@@ -11,12 +11,12 @@ function CREATE_CONTAINER(){
     if [[ -d /home/docker/ ]]; then
     wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/nginx.conf
     wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/Dockerfile
-    docker build -t "registry.red-soft.ru/ubi7/nginx-micro:test" /home/docker/Dockerfile
+    cd /home/docker/ && docker build -t "registry.red-soft.ru/ubi7/nginx-micro:test" .
     fi
 }
 
 function RUN(){
-    docker run -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test 
+    docker run -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
 }
 
 function MANI(){

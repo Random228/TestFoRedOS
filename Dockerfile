@@ -3,8 +3,6 @@ FROM registry.red-soft.ru/ubi7/ubi-micro:latest
 LABEL autor="Badalyan Tigran"
 
 COPY nginx.conf /etc/nginx/
-COPY --from=nginx:latest /docker-entrypoint.d/ / \
-docker-entrypoint.sh /
 
 RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf \
 && sed -i 's,/var/run/nginx.pid,/tmp/nginx.pid,' /etc/nginx/nginx.conf \
@@ -23,7 +21,7 @@ RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf \
 RUN find / -name *nginx* -exec chgrp -R nginx {} \;
 RUN find / -name *nginx* -exec chmod -R g=rwx {} \;
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash"]
 
 EXPOSE 8080
 
