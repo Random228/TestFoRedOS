@@ -27,4 +27,5 @@ EXPOSE 8080
 STOPSIGNAL SIGQUIT
 
 USER nginx 
-CMD ["nginx","-q","-c","/etc/nginx/nginx.conf"]
+CMD ["nginx","-g","daemon off;"] \
+&& ["nginx","-q","-c","/etc/nginx/nginx.conf"]
