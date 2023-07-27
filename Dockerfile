@@ -21,11 +21,10 @@ RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf \
 RUN find / -name *nginx* -exec chgrp -R nginx {} \;
 RUN find / -name *nginx* -exec chmod -R g=rwx {} \;
 
-RUN ["nginx","-g","daemon off;"]
 EXPOSE 8080
 
 STOPSIGNAL SIGQUIT
 
-USER nginx 
-CMD ["nginx","-g","daemon off;"] \
-&& ["nginx","-q","-c","/etc/nginx/nginx.conf"]
+USER nginx
+RUN ["nginx","-q","-c","/etc/nginx/nginx.conf"]
+CMD ["nginx","-g","daemon off;"]
