@@ -32,4 +32,4 @@ STOPSIGNAL SIGQUIT
 
 USER nginx
 RUN nginx -q -c /etc/nginx/nginx.conf
-CMD nginx -g "daemon off;"
+CMD ["nginx","-g","daemon off;"]
