@@ -16,7 +16,7 @@ function CREATE_CONTAINER(){
 }
 
 function RUN(){
-    docker run -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
+    docker run -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
 }
 
 function MANI(){
