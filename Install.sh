@@ -15,13 +15,21 @@ function CREATE_CONTAINER(){
     fi
 }
 
+function SAVE(){
+    docker save registry.red-soft.ru/ubi7/nginx-micro:test
+    tar -cpJf "image.tar.xz" /home/docker/image.tar
+    rm -f /home/docker/image.tar
+}
+
 function RUN(){
     docker run -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
+    echo -E "Контейнер запущен"
 }
 
 function MANI(){
     START
     CREATE_CONTAINER
+    SAVE
     RUN
 }
 MANI
