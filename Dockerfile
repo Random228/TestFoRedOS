@@ -21,8 +21,6 @@ RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf \
 RUN find / -name *nginx* -exec chgrp -R nginx {} \;
 RUN find / -name *nginx* -exec chmod -R g=rwx {} \;
 
-ENTRYPOINT ["/bin/bash"]
-
 EXPOSE 8080
 
 STOPSIGNAL SIGQUIT
