@@ -11,6 +11,7 @@ function CREATE_CONTAINER(){
     if [[ -d /home/docker/ ]]; then
     wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/nginx.conf
     wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/Dockerfile
+    wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/index.html
     cd /home/docker/ && docker build -t "registry.red-soft.ru/ubi7/nginx-micro:test" .
     fi
 }
