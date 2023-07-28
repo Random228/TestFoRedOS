@@ -2,7 +2,7 @@
 
 # Проверка, установлен ли Docker. 
 function CHECK_DOCKER(){
-    if [[ `docker -v | awk {'print $1,$2'}` == "Docker version" ]]; then 
+    if [[ `docker -v  2>/dev/null | awk {'print $1,$2'}` == "Docker version" ]]; then 
     echo "Docker установлен"
     else yum install cri-dockerd.x86_64 -y && service docker start
     fi
