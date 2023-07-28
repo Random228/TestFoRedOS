@@ -19,5 +19,5 @@
 После установки
 3) Должны существовать папки /home/docker. Если таких нет - создать.
 4) Выполнить команду
-   ```wget -c https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/Install.bash && bash Install.bash```
+   ```wget -c https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/install.bash && bash install.bash```
 5) Дождаться завершения работы скрипта.

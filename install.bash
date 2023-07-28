@@ -30,6 +30,12 @@ function CREATE_CONTAINER(){
     wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/index.html
     # Тегированная сборка образа.
     cd /home/docker/ && docker build -t "registry.red-soft.ru/ubi7/nginx-micro:test" .
+    else
+    mkdir -p /home/docker
+    wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/nginx.conf
+    wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/Dockerfile
+    wget -c --directory-prefix=/home/docker/ https://raw.githubusercontent.com/Random228/TestFoRedOS/NewTest/index.html
+    cd /home/docker/ && docker build -t "registry.red-soft.ru/ubi7/nginx-micro:test" .
     fi
 }
 
@@ -57,12 +63,17 @@ function RUN(){
 
 
 function MANI(){
+    clear
     # Проверка пользователя который запускает скрипт с использование id вместо whoami.
     if [[ `id | awk {'print $1'} | grep -wo 0` == 0 ]]; then
     CHECK_DOCKER
+    clear
     START
+    clear
     CREATE_CONTAINER
+    clear
     SAVE
+    clear
     RUN
     else echo -E "Пользователь должен быть root"
     exit
