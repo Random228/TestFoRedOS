@@ -17,20 +17,28 @@ function CREATE_CONTAINER(){
 }
 
 function SAVE(){
-    docker save registry.red-soft.ru/ubi7/nginx-micro:test
+    docker save registry.red-soft.ru/ubi7/nginx-micro:test > image.tar
     tar -cpJf "image.tar.xz" /home/docker/image.tar
+    if [[ -f /home/docker/image.tar ]]; then
     rm -f /home/docker/image.tar
+    fi
 }
 
 function RUN(){
-    docker run -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
+    docker run --name test -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
+    docker exec -it test nginx -t
     echo -E "Контейнер запущен"
+    ls /home/docker/image.tar.xz
 }
 
 function MANI(){
+    if [[ `id | awk {'print $1'} | grep -wo 0` == 0 ]]; then
     START
     CREATE_CONTAINER
     SAVE
     RUN
+    else echo -E "Пользователь должен быть root"
+    exit
+    fi
 }
 MANI
