@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Проверка, установлен ли Docker. 
+function CHECK_DOCKER(){
+    if [[ `docker -v | awk {'print $1,$2'}` == "Docker version" ]]; then 
+    echo "Docker установлен"
+    else yum install cri-dockerd.x86_64 -y && service docker start
+    fi
+}
+
 # Скачаем необходимый образ и установим в него nginx используя средства хоста.
 function START(){
     # Скачиваем образ.
@@ -51,6 +59,7 @@ function RUN(){
 function MANI(){
     # Проверка пользователя который запускает скрипт с использование id вместо whoami.
     if [[ `id | awk {'print $1'} | grep -wo 0` == 0 ]]; then
+    CHECK_DOCKER
     START
     CREATE_CONTAINER
     SAVE
