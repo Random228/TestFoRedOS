@@ -54,9 +54,11 @@ function SAVE(){
 # Запуск и тестирование контейнера.
 function RUN(){
     # Запуск контейнера.
-    docker run --name test -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
+    docker run --name nginx-web -d -p 8080:80 registry.red-soft.ru/ubi7/nginx-micro:test
+    # Показываем работающий процесс
+    docker ps
     # Выполнение команды для проверки работы Nginx.
-    docker exec -it test nginx -t
+    docker exec -it nginx-web nginx -t
     # Показываем где лежит сохраненный образ.
     ls /home/docker/image.tar.xz
 }
