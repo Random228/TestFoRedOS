@@ -68,8 +68,4 @@ function MANI(){
     exit
     fi
 }
-<<<<<<< HEAD
 MANI
-=======
-MANI
->>>>>>> f233f637399ebb0ee2f999e71c6e3f5868a55efb
